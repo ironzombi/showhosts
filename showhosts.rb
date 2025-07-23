@@ -43,8 +43,11 @@ when "-h"
 when "-r"
   cmdr = `netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq`
   host_resolv(cmdr)
-else
+when nil
   cmd = `netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq`
   hosts(cmd)
+else
+  puts "invalid option"
+  exit 1
 end
 
