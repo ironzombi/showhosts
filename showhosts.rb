@@ -38,6 +38,7 @@ when "-a"
 when "-h"
   puts "ShowHosts lists all the IP Addresses that are currently connected"
   puts " -a = show IP's and Ports"
+  puts " -r = show hostnames"
   puts " -h  this help menu"
 when "-r"
   cmdr = `netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq`
