@@ -4,9 +4,18 @@
 ###################
 require 'resolv'
 require 'optparse'
+
 def host_port(list)
   list.split("\n").each do |all|
     puts all
+  end
+end
+
+def host_serv(list)
+  list.split("\n").each do |all|
+    ip = all.split(":").first
+    port = all.split(":").last
+    puts port
   end
 end
 
@@ -42,8 +51,12 @@ parser = OptionParser.new do |opts|
     options[:verbose] = true
   end
 
-  opts.on("-r", "--names", "resolves hostnames") do
-    options[:names] = true
+  opts.on("-r", "--resolv", "resolves hostnames") do
+    options[:resolv] = true
+  end
+
+  opts.on("-s", "--serv", "resolves services") do
+    options[:serv] = true
   end
 end
 
@@ -58,9 +71,12 @@ end
 if options[:verbose]
   cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
   host_port(cmd1)
-elsif options[:names]
+elsif options[:resolv]
   cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq] 
   host_resolv(cmdr)
+elsif options[:serv]
+  cmds = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq]
+  host_serv(cmds)
 else
   cmd = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
   hosts(cmd)
