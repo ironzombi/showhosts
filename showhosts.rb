@@ -55,12 +55,14 @@ rescue OptionParser::InvalidOption => e
   exit 1
 end
 
-cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq] if options[:verbose] do
+if options[:verbose]
+  cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
   host_port(cmd1)
-end
-cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq] if options[:names] do
+elsif options[:name]
+  cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq] 
   host_resolv(cmdr)
+else
+  cmd = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
+  hosts(cmd)
 end
-cmd = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
-hosts(cmd)
 
