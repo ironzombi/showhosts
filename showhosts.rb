@@ -16,14 +16,12 @@ def host_serv(list)
     ip = all.split(":").first
     port = all.split(":").last
     File.foreach("/etc/services") do |line|
-      if line.start_with?(port)
+      if line.include?(port)
         res = line.strip.split
-        puts res[0]
-        puts res[1]
+        puts("#{ip} #{res[0]} #{res[1]}\n")
         break
       end
     end
-    puts port
   end
 end
 
