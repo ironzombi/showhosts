@@ -78,7 +78,7 @@ if options[:verbose]
   cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
   host_port(cmd1)
 elsif options[:resolv]
-  cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq] 
+  cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|cut -d":" -f1|sort|uniq] 
   host_resolv(cmdr)
 elsif options[:serv]
   cmds = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq]
