@@ -43,7 +43,7 @@ def host_resolv(list)
     end
   end
 end
-
+#need to add mac support
 options = {}
 parser = OptionParser.new do |opts|
   opts.banner = "Usage: showhosts [options]"
