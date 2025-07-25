@@ -58,7 +58,7 @@ end
 if options[:verbose]
   cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
   host_port(cmd1)
-elsif options[:name]
+elsif options[:names]
   cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq] 
   host_resolv(cmdr)
 else
