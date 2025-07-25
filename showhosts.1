@@ -1,0 +1,31 @@
+.TH SHOWHOSTS 1 "July 2025" "Version 1.0" "User Commands"
+.SH NAME
+showhosts \- a wrapper for netstat
+.SH SYNOPSIS
+.B showhosts
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+This script shows what hosts are connected to your device.
+Default will output IP Addresses only
+.TP
+quick way to see who is connected to your host on what ports
+.SH OPTIONS
+.TP
+.B \-a, \-\-all
+Show IP's and ports
+.TP
+.B \-r, \-\-resolv
+resolves IP to hostname
+.TP
+.B \-s, \-\-serv
+show services details
+.TP
+.B \-h, \-\-help
+Show this help message.
+
+.SH AUTHOR
+mip.
+
+.SH SEE ALSO
+ruby(1)
+
