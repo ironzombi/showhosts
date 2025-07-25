@@ -1,6 +1,5 @@
-Showhosts:
-
-netstat wrapper script
+# Showhosts 
+## netstat wrapper
 
 less functional than netstat
 
