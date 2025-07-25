@@ -3,7 +3,7 @@
 # connected hosts #
 ###################
 require 'resolv'
-
+require 'optparse'
 def host_port(list)
   list.split("\n").each do |all|
     puts all
@@ -29,25 +29,38 @@ def host_resolv(list)
   end
 end
 
-val = ARGV[0]
+options = {}
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: showhosts [options]"
 
-case val
-when "-a"
-  cmd1 = `netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq`
-  host_port(cmd1)
-when "-h"
-  puts "ShowHosts lists all the IP Addresses that are currently connected"
-  puts " -a = show IP's and Ports"
-  puts " -r = show hostnames"
-  puts " -h  this help menu"
-when "-r"
-  cmdr = `netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq`
-  host_resolv(cmdr)
-when nil
-  cmd = `netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq`
-  hosts(cmd)
-else
-  puts "invalid option"
+  opts.on("-h","--help", "prints this help message") do
+    puts opts
+    exit
+  end
+
+  opts.on("-a", "--all", "prints ip and port numnber") do
+    options[:verbose] = true
+  end
+
+  opts.on("-r", "--names", "resolves hostnames") do
+    options[:names] = true
+  end
+end
+
+begin
+  parser.parse!
+rescue OptionParser::InvalidOption => e
+  puts e.message
+  puts parser
   exit 1
 end
+
+cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq] if options[:verbose] do
+  host_port(cmd1)
+end
+cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq] if options[:names] do
+  host_resolv(cmdr)
+end
+cmd = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
+hosts(cmd)
 
