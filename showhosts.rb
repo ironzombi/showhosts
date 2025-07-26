@@ -43,7 +43,21 @@ def host_resolv(list)
     end
   end
 end
+
 #need to add mac support
+def check_os_version
+  case RUBY_PLATFORM
+  when /linux/
+    puts "Running on Linux"
+  when /darwin/
+    puts "Running on macOS"
+  when /mingw|mswin/
+    puts "Running on Windows"
+  else
+    puts "Unknown OS: #{RUBY_PLATFORM}"
+  end
+end
+  
 options = {}
 parser = OptionParser.new do |opts|
   opts.banner = "Usage: showhosts [options]"
