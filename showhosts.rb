@@ -44,7 +44,7 @@ def host_resolv(list)
   end
 end
 
-#need to add mac support
+#need to add os support
 def check_os_version
   case RUBY_PLATFORM
   when /linux/
@@ -87,6 +87,8 @@ rescue OptionParser::InvalidOption => e
   puts parser
   exit 1
 end
+
+check_os_version
 
 if options[:verbose]
   cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
