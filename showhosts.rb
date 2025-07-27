@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-# Script to list  #
-# connected hosts #
-###################
+# Script to list   #
+# connected hosts  #
+####################
 require 'resolv'
 require 'optparse'
 
@@ -50,9 +50,9 @@ def check_os_version
   when /linux/
     puts "Running on Linux"
   when /darwin/
-    puts "Running on macOS"
+    puts "Running on macOS"   //should just be the same as linux ?
   when /mingw|mswin/
-    puts "Running on Windows"
+    puts "Running on Windows" //not sure this will work
   else
     puts "Unknown OS: #{RUBY_PLATFORM}"
   end
