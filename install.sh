@@ -20,12 +20,12 @@ install_script() {
   # copy the script and man page
   echo "Installing to $TARGET_DIR..."
   sleep 1
-  cp -v ./showhosts.rb "$TARGET_DIR/showhosts"
-  chmod +x "$TARGET_DIR/showhosts"
+  sudo cp -v ./showhosts.rb "$TARGET_DIR/showhosts"
+  sudo chmod +x "$TARGET_DIR/showhosts"
   sleep 1
   echo "building connscan"
   go build ./connscan.go
-  cp -v ./connscan "$TARGET_DIR/connscan"
+  sudo cp -v ./connscan "$TARGET_DIR/connscan"
   sleep 1
   echo "updating manpages - requires elevated privs"
   sudo cp -v ./manpages/showhosts.1 /usr/local/share/man/man1/
