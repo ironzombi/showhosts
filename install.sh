@@ -23,10 +23,13 @@ install_script() {
   cp -v ./showhosts.rb "$TARGET_DIR/showhosts"
   chmod +x "$TARGET_DIR/showhosts"
   sleep 1
+  echo "building connscan"
   go build ./connscan.go
+  cp -v ./connscan "$TARGET_DIR/connscan"
   sleep 1
   echo "updating manpages - requires elevated privs"
-  sudo cp -v ./showhosts.1 /usr/local/share/man/man1
+  sudo cp -v ./showhosts.1 /usr/local/share/man/man1/
+  sudo cp -v ./connscan.1 /usr/local/share/man/man1/
   sleep 2
   sudo mandb
   echo "Done."
