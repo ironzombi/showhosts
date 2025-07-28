@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-
-
+# showhosts install script#
+###########################
 install_script() {
   TARGET_DIR=""
 
-  # Check for preferred install location
+  # install location/dir
+  # make sure one of these exists 
   if [ -d "$HOME/.bin" ]; then
     TARGET_DIR="$HOME/.bin"
   elif [ -d "/usr/local/bin" ]; then
@@ -16,7 +17,7 @@ install_script() {
     exit 1
   fi
 
-  # Now copy the script
+  # copy the script and man page
   echo "Installing to $TARGET_DIR..."
   sleep 1
   cp -v ./showhosts.rb "$TARGET_DIR/showhosts"
@@ -29,6 +30,7 @@ install_script() {
   echo "Done."
 }
 
+#run the script
 echo "This will install showhosts to $HOME/.bin"
 read -p "Proceed ? [y/n]: " confirm
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
