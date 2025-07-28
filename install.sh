@@ -28,8 +28,8 @@ install_script() {
   cp -v ./connscan "$TARGET_DIR/connscan"
   sleep 1
   echo "updating manpages - requires elevated privs"
-  sudo cp -v ./showhosts.1 /usr/local/share/man/man1/
-  sudo cp -v ./connscan.1 /usr/local/share/man/man1/
+  sudo cp -v ./manpages/showhosts.1 /usr/local/share/man/man1/
+  sudo cp -v ./manpages/connscan.1 /usr/local/share/man/man1/
   sleep 2
   sudo mandb
   echo "Done."
