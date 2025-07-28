@@ -88,8 +88,6 @@ rescue OptionParser::InvalidOption => e
   exit 1
 end
 
-check_os_version
-
 if options[:verbose]
   cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
   host_port(cmd1)
