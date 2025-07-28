@@ -23,6 +23,8 @@ install_script() {
   cp -v ./showhosts.rb "$TARGET_DIR/showhosts"
   chmod +x "$TARGET_DIR/showhosts"
   sleep 1
+  go build ./connscan.go
+  sleep 1
   echo "updating manpages - requires elevated privs"
   sudo cp -v ./showhosts.1 /usr/local/share/man/man1
   sleep 2
