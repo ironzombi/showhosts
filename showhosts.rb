@@ -89,16 +89,16 @@ rescue OptionParser::InvalidOption => e
 end
 
 if options[:verbose]
-  cmd1 = %x[./connscan]
+  cmd1 = %x[$HOME/.bin/connscan]
   host_port(cmd1)
 elsif options[:resolv]
-  cmdr = %x[./connscan|cut -d":" -f1] 
+  cmdr = %x[$HOME/.bin/connscan|cut -d":" -f1] 
   host_resolv(cmdr)
 elsif options[:serv]
-  cmds = %x[./connscan]
+  cmds = %x[$HOME/.bin/connscan]
   host_serv(cmds)
 else
-  cmd = %x[./connscan]
+  cmd = %x[$HOME/.bin/connscan]
   hosts(cmd)
 end
 
