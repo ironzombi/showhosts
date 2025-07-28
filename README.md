@@ -8,7 +8,7 @@ bash ./install.sh
 
 requires sudo access to update manpages
 
-will copy showhosts to $HOME/.bin if it exists
+will copy showhosts to $HOME/.bin if it exists \n
 builds connscan.go and copies to $HOME/.bin if it exists
 ### Requirements
 ruby
