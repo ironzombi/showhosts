@@ -3,11 +3,11 @@
 
 less functional than netstat
 
-less cool
+less cool than netstat
 
-less options
+less options than netstat
 
-practically useless.
+practically useless compared to netstat
 
 ### Install
 bash ./install.sh
