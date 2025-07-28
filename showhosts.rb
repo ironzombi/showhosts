@@ -89,16 +89,16 @@ rescue OptionParser::InvalidOption => e
 end
 
 if options[:verbose]
-  cmd1 = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
+  cmd1 = %x[./connscan]
   host_port(cmd1)
 elsif options[:resolv]
-  cmdr = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|cut -d":" -f1|sort|uniq] 
+  cmdr = %x[./connscan|cut -d":" -f1] 
   host_resolv(cmdr)
 elsif options[:serv]
-  cmds = %x[netstat -tan|grep tcp|awk '{print $5}'|grep -v "*"|uniq]
+  cmds = %x[./connscan]
   host_serv(cmds)
 else
-  cmd = %x[netstat -tan| grep tcp|awk '{print $5}'|grep -v "*"|uniq]
+  cmd = %x[./connscan]
   hosts(cmd)
 end
 
