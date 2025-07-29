@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # showhosts install script#
 ###########################
+#for macos:
+# go get github.com/shirou/gopsutil/v3/net
 install_script() {
   TARGET_DIR=""
 
