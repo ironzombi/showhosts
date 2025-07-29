@@ -27,7 +27,7 @@ install_script() {
   sleep 1
   echo "building connscan"
   go build ./connscan.go
-  sudo cp -v ./connscan "$TARGET_DIR/connscan"
+  sudo mv -v ./connscan "$TARGET_DIR/connscan"
   sleep 1
   echo "updating manpages - requires elevated privs"
   sudo cp -v ./manpages/showhosts.1 /usr/local/share/man/man1/
