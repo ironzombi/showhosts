@@ -44,7 +44,7 @@ def host_resolv(list)
   end
 end
 
-#need to add os support
+#TODO:need to add os support
 def check_os_version
   case RUBY_PLATFORM
   when /linux/
