@@ -13,5 +13,7 @@ will copy showhosts to $HOME/.bin if it exists
 builds connscan.go and copies to $HOME/.bin if it exists
 ### Requirements
 ruby
+
 golang
+
 elevated privileges for install
