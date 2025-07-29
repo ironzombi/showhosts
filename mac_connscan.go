@@ -6,7 +6,7 @@ import (
 	"github.com/shirou/gopsutil/v3/net"
 )
 
-func main() {
+func macConnscan() {
 	conns, err := net.Connections("tcp")
 	if err != nil {
 		panic(err)
