@@ -5,6 +5,8 @@
 require 'resolv'
 require 'optparse'
 
+release = "0.1"
+
 def host_port(list)
   list.split("\n").each do |all|
     puts all
@@ -78,6 +80,10 @@ parser = OptionParser.new do |opts|
   opts.on("-s", "--serv", "resolves services") do
     options[:serv] = true
   end
+
+  opts.on("-v", "--version", "showhosts version") do
+    options[:version] = true
+  end
 end
 
 begin
@@ -97,6 +103,8 @@ elsif options[:resolv]
 elsif options[:serv]
   cmds = %x[connscan]
   host_serv(cmds)
+elsif options[:version]
+  puts "#{release}"
 else
   cmd = %x[connscan]
   hosts(cmd)
