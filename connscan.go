@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
@@ -28,7 +27,7 @@ func hexToPort(hex string) int {
 }
 
 func main() {
-	data, err := ioutil.ReadFile("/proc/net/tcp")
+	data, err := os.ReadFile("/proc/net/tcp")
 	if err != nil {
 		fmt.Println("Error reading /proc/net/tcp:", err)
 		os.Exit(1)
