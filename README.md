@@ -17,3 +17,7 @@ ruby
 golang
 
 elevated privileges for install
+
+###TODO
+currently only works on linux
+add support for macos
