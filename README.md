@@ -1,7 +1,7 @@
 # Showhosts 
 ## Lists connected hosts
 basic script to only see connected ip/hosts (and services)
-
+poorly coded
 
 ### Install
 bash ./install.sh
