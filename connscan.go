@@ -1,5 +1,6 @@
 package main
 
+/* list connected hosts */
 import (
 	"fmt"
 	"os"
