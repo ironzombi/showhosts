@@ -54,7 +54,7 @@ def check_os_version
   when /darwin/
     puts "Running on macOS"   #should just be the same as linux ?
   when /mingw|mswin/
-    puts "Running on Windows" #not sure this will work 
+    puts "Running on Windows" #remove - wont work
   else
     puts "Unknown OS: #{RUBY_PLATFORM}"
   end
