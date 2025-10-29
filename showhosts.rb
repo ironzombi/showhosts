@@ -1,18 +1,20 @@
 #!/usr/bin/env ruby
-# Script to list   #
-# connected hosts  #
-####################
+# Script to list connected hosts  #
+# ironzombi                       #
+###################################
 require 'resolv'
 require 'optparse'
 
-release = "0.1"
+release = "0.2"
 
+#outputs host and port
 def host_port(list)
   list.split("\n").each do |all|
     puts all
   end
 end
 
+#resolves port number to service
 def host_serv(list)
   list.split("\n").each do |all|
     ip = all.split(":").first
@@ -27,6 +29,7 @@ def host_serv(list)
   end
 end
 
+#basic host:port output
 def hosts(list)
   list.split("\n").each do |all|
     ip = all.split(":").first
@@ -34,6 +37,7 @@ def hosts(list)
   end
 end
 
+#resolve IP to hostname and exclude port
 def host_resolv(list)
   list.split("\n").each do |all|
     ip = all.split(":").first
@@ -59,7 +63,8 @@ def check_os_version
     puts "Unknown OS: #{RUBY_PLATFORM}"
   end
 end
-  
+ 
+#Options/Usage output
 options = {}
 parser = OptionParser.new do |opts|
   opts.banner = "Usage: showhosts [options]"
@@ -86,6 +91,7 @@ parser = OptionParser.new do |opts|
   end
 end
 
+#MAIN
 begin
   parser.parse!
 rescue OptionParser::InvalidOption => e
@@ -94,6 +100,7 @@ rescue OptionParser::InvalidOption => e
   exit 1
 end
 
+#pass connscan output to requested function
 if options[:verbose]
   cmd1 = %x[connscan]
   host_port(cmd1)
